@@ -3,11 +3,34 @@ import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from "react
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 
+
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import {useEffect} from 'react';
+
 import musicBackground from "../../assets/music.png";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
+SplashScreen.preventAutoHideAsync();
+
 export default function HomeScreen({ navigation }: Props) {
+
+  const [loaded, error] = useFonts({
+    'Inter-Black': require('../../fonts/MonumentExtended-Regular.otf'),
+  });
+
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
+  if (!loaded && !error) {
+    return null;
+  }
+
+
   return (
     <ImageBackground
       source={musicBackground} 
@@ -15,7 +38,13 @@ export default function HomeScreen({ navigation }: Props) {
     >
       <View style={styles.overlay}>
         <Text style={styles.logo}>NURO</Text>
-
+        <View>
+          <Text style={styles.txt}>KITCHEN<span style={{ color: "#7A9AB8",}}></span></Text>
+          <Text style={styles.txt}>HOME<span style={{ color: "#7A9AB8",}}></span></Text>
+          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}>-ELECTRONICS</span> </Text>
+          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}></span>SPORT</Text>
+          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}></span>EXHIBITIONS</Text>
+        </View>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate("Music")}
@@ -29,7 +58,10 @@ export default function HomeScreen({ navigation }: Props) {
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
-
+  txt: {
+    color: '#C5CFD8',
+    fontFamily: 'Inter-Black',
+  },
   overlay: {
     flex: 1,
     justifyContent: "space-between",
@@ -38,8 +70,9 @@ const styles = StyleSheet.create({
 
   logo: {
     color: "#7A9AB8",
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 40,
+    fontFamily: 'Inter-Black',
   },
 
   button: {

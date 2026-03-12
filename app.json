@@ -25,6 +25,32 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
-  }
+    },
+    "plugins": [
+         [
+           "expo-font",
+           {
+             "fonts": [
+               "./fonts/MonumentExtended-Ultrabold.otf"
+             ],
+             "android": {
+               "fonts": [
+                 {
+                   "fontFamily": "Monument",
+                   "fontDefinitions": [
+                     {
+                       "path": "./fonts/MonumentExtended-Ultrabold.otf"
+                       
+                     }
+                   ]
+                 }
+               ]
+             },
+             "ios": {
+               "fonts": ["./fonts/MonumentExtended-Ultrabold.otf", "./fonts/MonumentExtended-Ultrabold.otf"]
+             }
+           }
+         ]
+       ]
+     }
 }
