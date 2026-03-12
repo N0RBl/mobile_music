@@ -99,10 +99,12 @@ const styles = StyleSheet.create({
   },
   logo: { 
     color: "#7A9AB8",
-    fontSize: 20,
+    fontSize: 18,
+    fontFamily: 'Inter-Black',
   },
   info: {
     marginBottom: 40,
+    
   },
 
   button: {

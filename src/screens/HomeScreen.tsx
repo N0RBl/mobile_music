@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: "#fff",
-    fontWeight: "600",
+    fontSize: 11,
+    letterSpacing: 2.5,
+    fontFamily: 'Inter-Black',
   },
 });
