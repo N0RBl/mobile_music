@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
-
-
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import {useEffect} from 'react';
-
 import musicBackground from "../../assets/music.png";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
@@ -15,7 +11,6 @@ type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 SplashScreen.preventAutoHideAsync();
 
 export default function HomeScreen({ navigation }: Props) {
-
   const [loaded, error] = useFonts({
     'Inter-Black': require('../../fonts/MonumentExtended-Regular.otf'),
   });
@@ -30,20 +25,16 @@ export default function HomeScreen({ navigation }: Props) {
     return null;
   }
 
-
   return (
-    <ImageBackground
-      source={musicBackground} 
-      style={styles.container}
-    >
+    <ImageBackground source={musicBackground} style={styles.container}>
       <View style={styles.overlay}>
         <Text style={styles.logo}>NURO</Text>
         <View>
-          <Text style={styles.txt}>KITCHEN<span style={{ color: "#7A9AB8",}}></span></Text>
-          <Text style={styles.txt}>HOME<span style={{ color: "#7A9AB8",}}></span></Text>
-          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}>-ELECTRONICS</span> </Text>
-          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}></span>SPORT</Text>
-          <Text style={styles.txt}><span style={{ color: "#7A9AB8",}}></span>EXHIBITIONS</Text>
+          <Text style={styles.txt}>KITCHEN</Text>
+          <Text style={[styles.txt, { color: "#7A9AB8" }]}>HOME</Text>
+          <Text style={[styles.txt, { color: "#7A9AB8" }]}>-ELECTRONICS</Text>
+          <Text style={styles.txt}>SPORT</Text>
+          <Text style={styles.txt}>EXHIBITIONS</Text>
         </View>
         <TouchableOpacity
           style={styles.button}
@@ -61,20 +52,20 @@ const styles = StyleSheet.create({
   txt: {
     color: '#C5CFD8',
     fontFamily: 'Inter-Black',
+    fontSize: 16,
+    marginVertical: 4,
   },
   overlay: {
     flex: 1,
     justifyContent: "space-between",
     padding: 30,
   },
-
   logo: {
     color: "#7A9AB8",
     fontSize: 18,
     marginTop: 40,
     fontFamily: 'Inter-Black',
   },
-
   button: {
     backgroundColor: "#7A9AB8",
     padding: 18,
@@ -82,7 +73,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 40,
   },
-
   buttonText: {
     color: "#fff",
     fontSize: 11,
